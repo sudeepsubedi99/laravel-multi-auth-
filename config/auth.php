@@ -110,14 +110,26 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-        'admin' => [
-            'driver' => 'eloquent',
-            'model' => \App\Models\Admin\Admin::class
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
         ],
-        'client' =>[ 
-            'driver' => 'eloquent',
-            'model' => \App\Models\Client\Client::class
-        ]
+        // 'admin' => [
+        //     'driver' => 'eloquent',
+        //     'model' => \App\Models\Admin\Admin::class
+        // ],
+        'clients' => [
+            'provider' => 'clients',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        // 'client' =>[ 
+        //     'driver' => 'eloquent',
+        //     'model' => \App\Models\Client\Client::class
+        // ]
     ],
 
     /*

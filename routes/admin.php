@@ -3,9 +3,11 @@
 
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\Admin\Auth\ResetPasswordController;
+use App\Http\Controllers\Admin\Auth\ForgotPasswordController;
 
 Route::prefix('/admin')->namespace('Admin')->group(function(){
     Route::namespace('Auth')->group(function(){
