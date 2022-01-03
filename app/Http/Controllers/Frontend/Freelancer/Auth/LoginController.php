@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Frontend\Client\Auth;
+namespace App\Http\Controllers\Frontend\Freelancer\Auth;
 
-use App\Models\Client;
+use App\Models\Freelancer;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Auth\RedirectsUsers;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Foundation\Auth\RedirectsUsers;
 
 class LoginController extends Controller
 {
@@ -30,7 +30,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = 'client/home';
+    protected $redirectTo = 'freelancer/home';
 
     /**
      * Create a new controller instance.
@@ -40,25 +40,25 @@ class LoginController extends Controller
    
     public function __construct()
     {
-        $this->middleware('guest:client')->except('logout');
+        $this->middleware('guest:freelancer')->except('logout');
     }
 
     public function showLoginForm()
     {
-        return view('frontend.client.auth.login');
+        return view('frontend.freelancer.auth.login');
     }
 
     protected function guard()
     {
-        return Auth::guard('client');
+        return Auth::guard('freelancer');
     }
     public function logout()
     {
-        Auth::guard('client')->logout();
+        Auth::guard('freelancer')->logout();
         return redirect('/');
     }
     public function home()
     {
-        return view('frontend.client.home');
+        return view('frontend.freelancer.home');
     }
 }

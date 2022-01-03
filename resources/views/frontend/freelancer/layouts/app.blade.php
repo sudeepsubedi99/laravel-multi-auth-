@@ -40,11 +40,13 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
+                            @if (Route::has('freelancer.login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
+                            @endif
 
-                            @if (Route::has('client.register'))
+                            @if (Route::has('freelancer.register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
@@ -52,7 +54,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::guard('client')->client()->name }}
+                                    {{ Auth::guard('freelancer')->freelancer()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -62,7 +64,7 @@
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('client.logout') }}" method="POST" class="d-none">
+                                    <form id="logout-form" action="{{ route('freelancer.logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                                 </div>

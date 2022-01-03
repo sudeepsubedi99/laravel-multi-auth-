@@ -16,8 +16,8 @@ class ClientSeeder extends Seeder
     public function run()
     {
         Client::create([
-            'name' => 'Admin',
-            'email' => 'admin@admin.com',
+            'name' => 'Client',
+            'email' => 'client@client.com',
             'password' => Hash::make('password'),
             
         ]);
