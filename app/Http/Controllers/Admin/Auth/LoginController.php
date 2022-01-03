@@ -37,7 +37,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest:admin')->except('logout');
     }
 
     public function showLoginForm()
@@ -48,5 +48,14 @@ class LoginController extends Controller
     protected function guard()
     {
         return Auth::guard('admin');
+    }
+    public function logout()
+    {
+        Auth::guard('admin')->logout();
+        return redirect('/');
+    }
+    public function home()
+    {
+        return view('admin.home');
     }
 }

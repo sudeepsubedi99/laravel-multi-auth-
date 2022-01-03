@@ -42,10 +42,10 @@ class LoginController extends Controller
         Auth::guard('admin')->logout();
         return redirect('/');
     }
-    public function home()
-    {
-        return view('admin.home');
-    }
+    // public function home()
+    // {
+    //     return view('admin.home');
+    // }
 
     
     

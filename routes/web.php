@@ -19,6 +19,7 @@ include 'frontend.php';
 
 
 Auth::routes();
+//Auth::routes(['verify' => true]);
 
 
 

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Frontend\Client\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\Client\Client;
-use App\Providers\RouteServiceProvider;
-use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -30,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo ='client.home';
+    protected $redirectTo ='client/home';
 
     /**
      * Create a new controller instance.
@@ -40,6 +40,11 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $this->middleware('guest:client')->except('logout');
+    }
+    public function showRegistrationForm()
+    {
+        return view('frontend.client.auth.register');
     }
 
     /**
@@ -69,6 +74,10 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-        ]);
+        ])->with('success', 'New Client created successsfully');
+    }
+    protected function guard()
+    {
+        return Auth::guard('client');
     }
 }
