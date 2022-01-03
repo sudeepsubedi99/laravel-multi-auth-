@@ -49,6 +49,10 @@ return [
             'driver' => 'session',
             'provider' => 'clients',
         ],
+        'freelancer' => [
+            'driver' => 'session',
+            'provider' => 'freelancers',
+        ],
     ],
 
     /*
@@ -85,6 +89,10 @@ return [
         'clients' => [
             'driver' =>'eloquent',
             'model' => \App\Models\Client\Client::class
+        ],
+        'freelancers' => [
+            'driver' =>'eloquent',
+            'model' => \App\Models\Freelancer\Freelancer::class
         ],
     ],
 
@@ -130,6 +138,13 @@ return [
         //     'driver' => 'eloquent',
         //     'model' => \App\Models\Client\Client::class
         // ]
+        'freelancers' => [
+            'provider' => 'freelancers',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        
     ],
 
     /*
