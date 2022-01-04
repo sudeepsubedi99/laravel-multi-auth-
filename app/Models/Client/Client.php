@@ -2,11 +2,12 @@
 
 namespace App\Models\Client;
 
+use App\Notifications\ClientResetPassword;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class Client extends Authenticatable
 {
@@ -41,4 +42,10 @@ class Client extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function sendPasswordResetNotification($token)
+    {
+        $url = route('client.password.reset', $token).'?email='.$this->email;
+    
+        $this->notify(new ClientResetPassword($url));
+    }
 }

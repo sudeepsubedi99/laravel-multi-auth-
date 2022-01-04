@@ -5,6 +5,7 @@ use App\Http\Controllers\Frontend\Freelancer\HomeController;
 use App\Http\Controllers\Frontend\Client\HomeController as CHome;
 use App\Http\Controllers\Frontend\Freelancer\Auth\LoginController;
 use App\Http\Controllers\Frontend\Freelancer\Auth\RegisterController;
+use App\Http\Controllers\Frontend\Client\Auth\ConfirmPasswordController as CCPC;
 use App\Http\Controllers\Frontend\Client\Auth\LoginController as CLogin;
 
 use App\Http\Controllers\Frontend\Freelancer\Auth\ResetPasswordController;
@@ -39,6 +40,10 @@ Route::get('/', function () {
         //Register Routes
         Route::get('/register',[CRegister::class,'showRegistrationForm'])->name('client.register');
         Route::post('/register',[CRegister::class,'register']);
+
+        //confirm password routes
+        Route::get('/password/confirm',[CCPC::class,'showConfirmForm'])->name('client.password.confirm');
+        Route::post('//password/confirm',[CCPC::class,'showConfirmForm']);
 
 
         //Forgot Password Routes

@@ -39,4 +39,10 @@ class ConfirmPasswordController extends Controller
     {
         $this->middleware('auth');
     }
+    public function showConfirmForm()
+    {
+        return view('frontend.client.auth.passwords.confirm');
+    }
+   
 }
+

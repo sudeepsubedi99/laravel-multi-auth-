@@ -40,6 +40,7 @@ class LoginController extends Controller
    
     public function __construct()
     {
+        $this->middleware('guest');
         $this->middleware('guest:client')->except('logout');
     }
 
@@ -55,10 +56,12 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::guard('client')->logout();
-        return redirect('/');
+        return redirect('welcome');
     }
     public function home()
     {
         return view('frontend.client.home');
     }
+   
+    
 }
