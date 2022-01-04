@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Frontend\Client\Auth;
 
-use App\Models\Client;
+use App\Models\Client\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;

@@ -1,16 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Frontend\Client\HomeController;
-use App\Http\Controllers\Frontend\Client\Auth\RegisterController as CRegister;
-use App\Http\Controllers\Frontend\Client\Auth\LoginController as CLogin;
-use App\Http\Controllers\Frontend\Client\Auth\ResetPasswordController as CResetPassword;
-use App\Http\Controllers\Frontend\Client\Auth\ForgotPasswordController as  CForgotPassword;
-
-use App\Http\Controllers\Frontend\Freelancer\Auth\RegisterController;
+use App\Http\Controllers\Frontend\Freelancer\HomeController;
+use App\Http\Controllers\Frontend\Client\HomeController as CHome;
 use App\Http\Controllers\Frontend\Freelancer\Auth\LoginController;
+use App\Http\Controllers\Frontend\Freelancer\Auth\RegisterController;
+use App\Http\Controllers\Frontend\Client\Auth\LoginController as CLogin;
+
 use App\Http\Controllers\Frontend\Freelancer\Auth\ResetPasswordController;
 use App\Http\Controllers\Frontend\Freelancer\Auth\ForgotPasswordController;
+use App\Http\Controllers\Frontend\Client\Auth\RegisterController as CRegister;
+use App\Http\Controllers\Frontend\Client\Auth\ResetPasswordController as CResetPassword;
+use App\Http\Controllers\Frontend\Client\Auth\ForgotPasswordController as  CForgotPassword;
 
 
 
@@ -26,13 +27,13 @@ Route::get('/', function () {
 
  // Client Routes 
 
- Route::prefix('/client')->namespace('Client')->group(function(){
+ Route::prefix('client')->namespace('Client')->group(function(){
     Route::namespace('Auth')->group(function(){
         
         //Login Routes
         Route::get('/login',[CLogin::class,'showLoginForm'])->name('client.login');
         Route::post('/login',[CLogin::class,'login']);
-        Route::get('/home',[HomeController::class,'index'])->name('client.home');
+        Route::get('/home',[CHome::class,'index'])->name('client.home');
         Route::post('/logout',[CLogin::class,'logout'])->name('client.logout');
     
         //Register Routes
@@ -58,7 +59,7 @@ Route::get('/', function () {
         //Login Routes
         Route::get('/login',[LoginController::class,'showLoginForm'])->name('freelancer.login');
         Route::post('/login',[LoginController::class,'login']);
-        Route::get('/home',[HomeController::class,'index'])->name('freelancer.home');
+        Route::get('/home',[HomeController::class,'home'])->name('freelancer.home');
         Route::post('/logout',[LoginController::class,'logout'])->name('freelancer.logout');
     
         //Register Routes

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Frontend\Freelancer\Auth;
 
-use App\Models\Freelancer;
+use App\Models\Freelancer\Freelancer;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
