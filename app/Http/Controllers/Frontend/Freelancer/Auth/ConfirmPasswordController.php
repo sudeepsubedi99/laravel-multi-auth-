@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend\Freelancer\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Auth\RedirectsUsers;
 use Illuminate\Foundation\Auth\ConfirmsPasswords;
 
 class ConfirmPasswordController extends Controller
@@ -20,6 +21,7 @@ class ConfirmPasswordController extends Controller
     */
 
     use ConfirmsPasswords;
+    use RedirectsUsers;
 
     /**
      * Where to redirect users when the intended url fails.

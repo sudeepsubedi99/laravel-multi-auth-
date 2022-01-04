@@ -34,7 +34,7 @@ Route::get('/', function () {
         //Login Routes
         Route::get('/login',[CLogin::class,'showLoginForm'])->name('client.login');
         Route::post('/login',[CLogin::class,'login']);
-        Route::get('/home',[CHome::class,'index'])->name('client.home');
+        Route::get('/home',[CHome::class,'home'])->name('client.home');
         Route::post('/logout',[CLogin::class,'logout'])->name('client.logout');
     
         //Register Routes
