@@ -13,6 +13,11 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth:client');
+    }
+
     public function home()
     {
         return view('frontend.client.home');

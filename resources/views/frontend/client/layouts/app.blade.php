@@ -40,9 +40,11 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
+                            @if (Route::has('client.login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('client.login') }}">{{ __('Login') }}</a>
                                 </li>
+                            @endif
 
                             @if (Route::has('client.register'))
                                 <li class="nav-item">
@@ -52,7 +54,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::guard('client')->client()->name }}
+                                    {{ Auth::guard('client')->user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -61,6 +63,11 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a href="{{route('home')}}" class="dropdown-item">Dashboard Controller</a>
+                                        <a class="dropdown-item" href="{{ route('client.login')}}" onclick="event.preventDefault();document.querySelector('#logout-form').submit();">
+                                            Logout
+                                        </a>
 
                                     <form id="logout-form" action="{{ route('client.logout') }}" method="POST" class="d-none">
                                         @csrf

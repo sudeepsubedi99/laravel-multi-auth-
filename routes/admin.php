@@ -14,7 +14,7 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){
         //Login Routes
         Route::get('/login',[LC::class,'showLoginForm'])->name('admin.login');
         Route::post('/login',[LC::class,'login']);
-        Route::get('/home',[HC::class,'index'])->name('admin.home')->middleware('auth');
+        Route::get('/home',[HC::class,'index'])->name('admin.home');
         Route::post('/logout',[LC::class,'logout'])->name('admin.logout');
     
         //Forgot Password Routes
