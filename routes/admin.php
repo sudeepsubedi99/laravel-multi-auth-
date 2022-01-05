@@ -4,8 +4,6 @@
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HomeController as HC;
-use App\Http\Controllers\Admin\AdminController;
-
 use App\Http\Controllers\Admin\Auth\LoginController as LC;
 use App\Http\Controllers\Admin\Auth\ResetPasswordController as RPC;
 use App\Http\Controllers\Admin\Auth\ForgotPasswordController as FPC;

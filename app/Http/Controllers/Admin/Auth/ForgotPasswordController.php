@@ -22,6 +22,7 @@ class ForgotPasswordController extends Controller
     */
 
     use SendsPasswordResetEmails;
+
     public function __construct()
     {
         $this->middleware('guest:admin');
@@ -33,10 +34,7 @@ class ForgotPasswordController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function showLinkRequestForm(){
-        return view('admin.auth.passwords.email',[
-            'title' => 'Admin Password Reset',
-            'passwordEmailRoute' => 'admin.password.email'
-        ]);
+        return view('admin.auth.passwords.email');
     }
 
     /**

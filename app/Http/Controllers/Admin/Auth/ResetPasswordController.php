@@ -7,6 +7,7 @@ use App\Models\Admin\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Auth\RedirectsUsers;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Foundation\Auth\ResetsPasswords;
@@ -25,13 +26,14 @@ class ResetPasswordController extends Controller
     */
 
     use ResetsPasswords;
+    use RedirectsUsers;
 
     /**
      * Where to redirect users after resetting their password.
      *
      * @var string
      */
-    protected $redirectTo = '/admin/home';
+    protected $redirectTo = 'admin/home';
 
     public function __construct()
     {
@@ -44,6 +46,7 @@ class ResetPasswordController extends Controller
         return view('admin.auth.passwords.reset')->with(
             ['token' => $token, 'email' => $request->email]
         );
+
     }
     protected function broker(){
         return Password::broker('admins');

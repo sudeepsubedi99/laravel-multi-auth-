@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('frontend.freelancer.layouts.app')
 
 @section('content')
 <div class="container">
